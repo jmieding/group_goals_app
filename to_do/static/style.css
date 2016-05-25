@@ -1,0 +1,92 @@
+table, th, td {
+  border: 1px solid black;
+  
+}
+
+table {
+  margin: 5% auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  background-color: #444;
+  color: white;
+}
+
+h4 {
+  text-align: center;
+  margin: 5% auto;
+}
+
+.selected {
+  background-color: rgb(2,120,144);
+}
+
+a {
+  color: black;
+}
+
+#login, #register {
+  background-color: white;
+  max-width: 335px;
+  margin: 10% auto;
+  border-radius: 5px;
+}
+
+@media (min-width: 767px) {
+  #login, #register {
+    border: solid #bbb 1px;
+    box-shadow: -2px 2px 5px gray;
+  }
+}
+
+#to_register, #to_login {
+  display: inline-block;
+  margin-bottom: 40px;
+  float: right;
+  font-size: 11px;
+}
+
+#login_header {
+  display: inline;
+}
+
+#form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+#username, #password, .password {
+  position: relative;
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#username {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: -1px;
+}
+
+#password, .password {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-primary {
+  background-color: rgb(2,120,144);
+  margin-top: 5%;
+}
+
+.btn-primary:hover {
+  background-color: rgb(2,100,124);
+}
+
