@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from .models import Profile
-from .forms import NewUserForm, MyLoginForm
+from .models import Profile, Goal
+from .forms import NewUserForm, MyLoginForm, GoalForm
 
 import datetime
 
@@ -78,3 +78,11 @@ def login_user(request):
 def logout_user(request):
   logout(request)
   return HttpResponseRedirect('/')
+
+@login_required(login_url='goals/login/')
+def profile(request):
+  user = request.user
+  form = GoalForm(request.POST or None)
+  goals = Goal.objects.filter(user__username=user.username)
+  return render(request, 'goals/profile.html', {'user': user, 'form': form, 'goals':goals})
+
