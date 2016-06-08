@@ -12,18 +12,47 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   
   {% load staticfiles %}
-  <!--JavaScript-->
-  <script src="{% static 'script.js' %}" async></script>
+
   <!--Bootstrap-->
+  <script src="{% static 'bootstrap-3.3.6-dist/js/bootstrap.min.js' %}"></script>
   <link href="{% static 'bootstrap-3.3.6-dist/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+  
   <!-- Font-Awesome -->
   <link rel="stylesheet" href="{% static 'font-awesome-4.6.3/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
-  <!--CSS-->
+  
+  <!--Custom CSS-->
   <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+  
+  <!--Custom JavaScript-->
+  <script src="{% static 'script.js' %}" async></script>
 </head>
 
 
 <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Group Goals</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="collapsed-navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Hi, {{request.user.username}}!</a></li>
+          <li><a href="{% url 'profile' %}">Profile<span class="sr-only">(current)</span></a></li>
+          <li><a href="{% url 'index' %}">Goals</a></li>
+          <li><a href="{% url 'logout_user' %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 {% block content %}
 {% endblock content %}
 

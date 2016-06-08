@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1 style="margin-top:10%"> Profile </h1>
+{{user}}
+<p>create a new goal</P>
+{{form.as_p}}
+
+<p>existing goals:</p>
+{% for goal in goals %}
+  <p>{{goal.title}}</p>
+{% endfor %}
+
+{% endblock content %}
