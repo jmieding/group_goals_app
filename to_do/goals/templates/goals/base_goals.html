@@ -3,8 +3,6 @@
 
 {% block content %}
 
-<h4>Group Goals</h4>
-<a href="{% url 'logout_user' %}">logout</a>
 <!-- <div class="table-responsive"> -->
 <table>
   <thead class="thead-inverse">
@@ -23,11 +21,9 @@
   <tbody>
   {% for user in users %}
   
-  <tr>
-    <td>{{user.username}}</td>
-    {% for field in form %}
-      <p> {{field}}</p>
-    {% endfor %}
+  <tr class="user">
+    <td>{{user.username}}  <i class="fa fa-chevron-down"></i></td>
+
     {% if user.profile.monday == True %}
       {% if request.user == user and day == 0 %}
         <td onclick="location.href='{% url 'update' 'monday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
@@ -127,21 +123,136 @@
     {% endif %}
 
   </tr>
+
+  <tr class="nested-goal">
+    <td>Goal Name</td>
+
+    {% if user.profile.monday == True %}
+      {% if request.user == user and day == 0 %}
+        <td onclick="location.href='{% url 'update' 'monday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 0 %}
+        <td onclick="location.href='{% url 'update' 'monday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+
+    {% if user.profile.tuesday == True %}
+      {% if request.user == user and day == 1 %}
+        <td onclick="location.href='{% url 'update' 'tuesday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 1 %}
+        <td onclick="location.href='{% url 'update' 'tuesday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+
+    {% if user.profile.wednesday == True %}
+      {% if request.user == user and day == 2 %}
+        <td onclick="location.href='{% url 'update' 'wednesday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 2 %}
+        <td onclick="location.href='{% url 'update' 'wednesday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+
+    {% if user.profile.thursday == True %}
+      {% if request.user == user and day == 3 %}
+        <td onclick="location.href='{% url 'update' 'thursday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 3 %}
+        <td onclick="location.href='{% url 'update' 'thursday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+
+    {% if user.profile.friday == True %}
+      {% if request.user == user and day == 4 %}
+        <td onclick="location.href='{% url 'update' 'friday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 4 %}
+        <td onclick="location.href='{% url 'update' 'friday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+
+    {% if user.profile.saturday == True %}
+      {% if request.user == user and day == 5 %}
+        <td onclick="location.href='{% url 'update' 'saturday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 5 %}
+        <td onclick="location.href='{% url 'update' 'saturday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+
+    {% if user.profile.sunday == True %}
+      {% if request.user == user and day == 6 %}
+        <td onclick="location.href='{% url 'update' 'sunday' %}'" style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% else %}
+        <td style="background-color:rgb(2,120,144)"><span class='fa fa-check-circle fa-lg'></span></td>
+      {% endif %}
+    {% else %}
+      {% if request.user == user and day == 6 %}
+        <td onclick="location.href='{% url 'update' 'sunday' %}'" style="background-color:#eee"></td>
+      {% else %}
+        <td style="background-color:#eee"></td>
+      {% endif %}
+    {% endif %}
+  </tr>
+
+
   </tbody>
   {% endfor %}
 </table>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      Longest Active Streak:
-      Username, Days
+    <div class="col-sm-4 center">
+      <ol>Longest Active Streak:
+        {% for user in users %}
+        <li>{{user}} - Blah Days</li>
+        {% endfor %}
+      </ol>
     </div>
-    <div class="col-sm-4">
-      Nearing Weekly Goal: Users, goals, descriptions
+    <div class="col-sm-4 center">
+      <ol>Nearing Weekly Goal: Users, goals, descriptions
+        {% for user in users %}
+        <li>{{user}} - Blah Days</li>
+        {% endfor %}
+      </ol>
     </div>
-    <div class="col-sm-4">
-      Leader Board This week:
+    <div class="col-sm-4 center">
+       <ol>Leader Board This Week:
+        {% for user in users %}
+        <li>{{user}} - Blah Days</li>
+        {% endfor %}
+      </ol>
     </div>
   </div>
 </div>  
