@@ -2,15 +2,8 @@ $(document).ready(function() {
 
   $('i.fa-chevron-down').click(function() {
     $(this).toggleClass('rotate');
-    var nextGoal = $(this).closest('tr').next();
-    while (true) {
-      if ($(nextGoal).hasClass('user')) {
-        break;
-      } else {
-        $(nextGoal).toggleClass('nested-goal');
-        $(nextGoal) = nextGoal.next();
-      }
-    }
+    var userGoals = $(this).closest('tr').nextUntil('.user');
+    $(userGoals).toggleClass('nested-goal');
   });
   
   $('td a div').click(function() {

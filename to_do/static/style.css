@@ -4,13 +4,26 @@ table, th, td {
 }
 
 table {
-  margin: 10% auto;
+  margin: auto;
+  margin-bottom: 10%;
   width: 100%;
   border-collapse: collapse;
 }
 
-tr {
-  height: 10vh;
+tr th, td {
+  font-size: .7em;
+}
+
+@media (min-width: 767px) {
+  tr th, td {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 767px) {
+  tr {
+    height: 10vh;
+  }
 }
 
 th, td {
@@ -122,3 +135,44 @@ ul.nav.navbar-nav.navbar-right li a:hover {
   color: rgb(2,120,144);
 }
 
+#week {
+  text-align: center;
+  margin-top: 65px;
+}
+
+@media (min-width:767px) {
+  #week {
+    margin-top: 10%;
+  }
+}
+
+#new_goal {
+  border: solid black 1px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+#newgoal h4 {
+  text-align: center;
+}
+
+#profile-header {
+  margin-top: 60px;
+  font-size: 2em;
+}
+
+@media (min-width: 767px) {
+  #profile-header {
+    margin-top: 10%;
+  }
+}
+
+.hide-small {
+  display: none;
+}
+
+@media (min-width: 767px) {
+  .hide-small {
+    display: inline;
+  }
+}
